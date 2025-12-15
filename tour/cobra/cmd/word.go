@@ -4,7 +4,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/golang-travel/tour/cobra/internal/word"
+	"github.com/golang-travel/tour/internal/word"
 	"github.com/spf13/cobra"
 )
 

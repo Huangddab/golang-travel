@@ -1,18 +1,22 @@
 package errcode
 
+// 错误码定义与管理
 import (
 	"fmt"
 	"net/http"
 )
 
+// 用于表示错误的响应结果
 type Error struct {
 	code    int      `json:"code"`
 	message string   `json:"message"`
 	details []string `json:"details"`
 }
 
+// 全局错误码的存储载体
 var codes = map[int]string{}
 
+// 创建新的Error实例时进行排重
 func NewError(code int, msg string) *Error {
 	if _, ok := codes[code]; ok {
 		panic(fmt.Sprintf("错误码 %d 已经存在，请更换一个", code))

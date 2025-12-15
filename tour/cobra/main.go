@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"github.com/golang-travel/tour/cobra/cmd"
+	"github.com/golang-travel/tour/cmd"
 )
 
 func main() {
