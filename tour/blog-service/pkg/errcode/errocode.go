@@ -37,7 +37,7 @@ func (e *Error) Message() string {
 	return e.message
 }
 
-func (e *Error) Msgf(args []interface{}) string {
+func (e *Error) Msgf(args ...interface{}) string {
 	return fmt.Sprintf(e.message, args...)
 }
 

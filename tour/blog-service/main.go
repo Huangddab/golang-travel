@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "blog-service/docs"
 	"blog-service/global"
 	"blog-service/internal/model"
 	"blog-service/internal/routers"
@@ -30,6 +31,10 @@ func init() {
 	}
 }
 
+// @title 博客系统
+// @version 1.0
+// @description Go 语言编程之旅：一起用 Go 做项目
+// @termsOfService https://github.com/go-programming-tour-book
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouters()
