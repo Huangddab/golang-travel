@@ -21,10 +21,6 @@ func NewTag() Tag {
 
 // 更常见的是使用指针接收者 以避免复制开销 并允许方法修改结构体的状态
 
-func (t Tag) Get(c *gin.Context) {
-	c.JSON(http.StatusOK, gin.H{"message": "获取标签"})
-}
-
 // @Summary 获取多个标签
 // @Produce json
 // @Param name query string false "标签名称" maxlength(100)
@@ -35,11 +31,29 @@ func (t Tag) Get(c *gin.Context) {
 // @Failure 400 {object} errcode.Error "请求错误"
 // @Failure 500 {object} errcode.Error "内部错误"
 // @Router /api/v1/tags [get]
-func (t Tag) List(c *gin.Context) {
-	// app.NewResponse(c).ToErrorResponse(errcode.ServerError)
-	// {"code":10000000,"msg":"服务内部错误"}* Connection #0 to host localhost:8088 left intact
-	c.JSON(http.StatusOK, gin.H{"message": "获取标签列表"})
+func (t Tag) Get(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"message": "获取标签"})
 }
+
+//
+// func (t Tag) List(c *gin.Context) {
+// 	// app.NewResponse(c).ToErrorResponse(errcode.ServerError)
+// 	// {"code":10000000,"msg":"服务内部错误"}* Connection #0 to host localhost:8088 left intact
+
+// 	param := struct {
+// 		Name  string `form:"name" binding:"max=100"`
+// 		State string `form:"state,default=1" binding:"oneof=0 1"`
+// 	}{}
+// 	response := app.NewResponse(c)
+// 	valid, errs := app.BindAndValid(c, &param)
+// 	if !valid {
+// 		global.Logger.Errorf("app.BindAndValid errs: %v", errs)
+// 		response.ToErrorResponse(errcode.InvalidParams.WithDetails(errs.Errors()...))
+// 		return
+// 	}
+// 	response.ToResponse(gin.H{})
+// 	return
+// }
 
 // @Summary 新增标签
 // @Produce  json

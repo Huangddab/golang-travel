@@ -1,6 +1,7 @@
 package routers
 
 import (
+	"blog-service/internal/middleware"
 	v1 "blog-service/internal/routers/api/v1"
 
 	"github.com/gin-gonic/gin"
@@ -12,6 +13,7 @@ func NewRouters() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
+	r.Use(middleware.Translations())
 	// Serve swagger UI. Use the default handler so the UI loads the doc.json
 	// from the same host and port as the running server (avoids hardcoded port).
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
@@ -27,7 +29,7 @@ func NewRouters() *gin.Engine {
 			tags.DELETE("/:id", tag.Delete)
 			tags.PUT("/:id", tag.Update)
 			tags.PATCH("/:id/state", tag.Update)
-			tags.GET("", tag.List)
+			tags.GET("", tag.Get)
 		}
 
 		// 文章管理
