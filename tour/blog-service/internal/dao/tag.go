@@ -37,7 +37,15 @@ func (d *Dao) UpdateTag(id uint32, name string, state uint8, modifiedBy string) 
 		State: state,
 		Model: &model.Model{ID: id, ModifiedBy: modifiedBy},
 	}
-	return tag.Update(d.engine)
+
+	values := map[string]interface{}{
+		"state":       state,
+		"modified_by": modifiedBy,
+	}
+	if name != "" {
+		values["name"] = name
+	}
+	return tag.Update(d.engine, values)
 }
 
 // 删除标签
