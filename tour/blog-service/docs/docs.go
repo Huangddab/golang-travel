@@ -82,38 +82,12 @@ const docTemplate = `{
                 "summary": "新增标签",
                 "parameters": [
                     {
-                        "maxLength": 100,
-                        "minLength": 3,
-                        "description": "标签名称",
-                        "name": "name",
+                        "description": "创建标签",
+                        "name": "data",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "default": 1,
-                        "description": "状态",
-                        "name": "state",
-                        "in": "body",
-                        "schema": {
-                            "type": "integer",
-                            "enum": [
-                                0,
-                                1
-                            ]
-                        }
-                    },
-                    {
-                        "maxLength": 100,
-                        "minLength": 3,
-                        "description": "创建者",
-                        "name": "created_by",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/service.CreateTagRequest"
                         }
                     }
                 ],
@@ -154,37 +128,12 @@ const docTemplate = `{
                         "required": true
                     },
                     {
-                        "maxLength": 100,
-                        "minLength": 3,
-                        "description": "标签名称",
-                        "name": "name",
-                        "in": "body",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "default": 1,
-                        "description": "状态",
-                        "name": "state",
-                        "in": "body",
-                        "schema": {
-                            "type": "integer",
-                            "enum": [
-                                0,
-                                1
-                            ]
-                        }
-                    },
-                    {
-                        "maxLength": 100,
-                        "minLength": 3,
-                        "description": "修改者",
-                        "name": "modified_by",
+                        "description": "更新标签",
+                        "name": "data",
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "type": "string"
+                            "$ref": "#/definitions/service.UpdateTagRequest"
                         }
                     }
                 ],
@@ -271,7 +220,7 @@ const docTemplate = `{
             "type": "object",
             "properties": {
                 "created_by": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "created_on": {
                     "type": "integer"
@@ -286,15 +235,17 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "modified_by": {
-                    "type": "integer"
+                    "type": "string"
                 },
                 "modified_on": {
                     "type": "integer"
                 },
                 "name": {
+                    "description": "标签名称",
                     "type": "string"
                 },
                 "state": {
+                    "description": "状态 (0-禁用 1-启用)",
                     "type": "integer"
                 }
             }
@@ -310,6 +261,61 @@ const docTemplate = `{
                 },
                 "pager": {
                     "$ref": "#/definitions/app.Pager"
+                }
+            }
+        },
+        "service.CreateTagRequest": {
+            "type": "object",
+            "required": [
+                "created_by",
+                "name"
+            ],
+            "properties": {
+                "created_by": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 2
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 2
+                },
+                "state": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
+                }
+            }
+        },
+        "service.UpdateTagRequest": {
+            "type": "object",
+            "required": [
+                "id",
+                "modified_by"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "minimum": 1
+                },
+                "modified_by": {
+                    "type": "string",
+                    "maxLength": 100,
+                    "minLength": 2
+                },
+                "name": {
+                    "type": "string",
+                    "maxLength": 100
+                },
+                "state": {
+                    "type": "integer",
+                    "enum": [
+                        0,
+                        1
+                    ]
                 }
             }
         }

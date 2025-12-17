@@ -1,17 +1,23 @@
 <!-- 基础组件 -->
 
 1.错误码标准化
-    
 2.配置管理
 3.数据库连接
 4.日志写入
 5.响应处理
 
 
+interval--
+     --routers
+     --dao
+     --middleware
+     --model
+     --service
+
 业务层 (Service)
      ↓ (调用)
-数据访问层 (DAO)
+数据访问层 (DAO) // 调用model中的数据库操作
      ↓ (调用)
-模型层 (Model)
+模型层 (Model)  // 数据库操作
      ↓ (调用)
-数据库 (DB)
+数据库 (DB) 

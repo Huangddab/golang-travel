@@ -29,7 +29,7 @@ func NewRouters() *gin.Engine {
 			tags.DELETE("/:id", tag.Delete)
 			tags.PUT("/:id", tag.Update)
 			tags.PATCH("/:id/state", tag.Update)
-			tags.GET("", tag.Get)
+			tags.GET("", tag.List)
 		}
 
 		// 文章管理

@@ -14,8 +14,8 @@ import (
 
 type Model struct {
 	ID         uint32 `gorm:"primaryKey;autoIncrement" json:"id"`
-	CreatedBy  int64  `json:"created_by"`
-	ModifiedBy int64  `json:"modified_by"`
+	CreatedBy  string `json:"created_by"`
+	ModifiedBy string `json:"modified_by"`
 	CreatedOn  int64  `json:"created_on"`
 	ModifiedOn int64  `json:"modified_on"`
 	DeletedOn  int64  `json:"deleted_on"`
@@ -121,13 +121,20 @@ func deleteCallback(db *gorm.DB) {
 	if !db.Statement.Unscoped && hasDeletedOn && hasIsDel {
 		now := time.Now().Unix()
 
-		// 新版GORM的正确写法：直接执行UPDATE
+		// 新版GORM的正确写法：使用主键执行软删除的 UPDATE
 		tableName := db.Statement.Table
-		whereSQL := db.Statement.SQL.String() // 获取WHERE条件
 
-		// 构建软删除的UPDATE语句
-		db.Exec("UPDATE ? SET deleted_on = ?, is_del = ? WHERE ?",
-			tableName, now, 1, whereSQL)
+		// 尝试从模型中读取主键 ID 值（大多数模型使用 uint32 类型的 ID 字段）
+		var id interface{}
+		if idField := modelValue.FieldByName("ID"); idField.IsValid() {
+			id = idField.Interface()
+		}
+
+		if id != nil && id != 0 {
+			// 使用 fmt.Sprintf 拼接表名并通过参数传入值，避免 GORM 对占位符的错误替换
+			sql := fmt.Sprintf("UPDATE %s SET deleted_on = ?, is_del = ? WHERE id = ?", tableName)
+			db.Exec(sql, now, 1, id)
+		}
 	}
 	// 否则让GORM执行默认的DELETE
 

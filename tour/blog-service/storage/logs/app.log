@@ -1,1 +1,19 @@
 2025/12/15 15:45:04 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 27 main.init.0"],"level":"INFO","message":"%s: go-programming-tour-book/%seddycjyblog-service","time":"3"}
+2025/12/16 14:49:00 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":"5"}
+2025/12/16 14:49:09 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":"6"}
+2025/12/17 10:17:44 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: State必须是[0 1]中的一个","time":"5"}
+2025/12/17 10:50:29 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"5"}
+2025/12/17 10:51:13 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"6"}
+2025/12/17 11:02:49 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"6"}
+2025/12/17 11:03:16 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"6"}
+2025/12/17 11:04:20 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: CreatedBy为必填字段","time":"6"}
+2025/12/17 11:04:32 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: CreatedBy为必填字段","time":"6"}
+2025/12/17 11:05:21 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: CreatedBy为必填字段","time":"6"}
+2025/12/17 11:08:05 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"7"}
+2025/12/17 11:08:28 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"8"}
+2025/12/17 11:10:02 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"5"}
+2025/12/17 11:10:13 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"6"}
+2025/12/17 11:10:29 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"6"}
+2025/12/17 11:13:34 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: ","time":"7"}
+2025/12/17 11:20:01 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"svc.DeleteTag err:Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? SET deleted_on = ?, is_del = ? WHERE ?' at line 1","time":"5"}
+2025/12/17 11:20:06 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"svc.DeleteTag err:Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '? SET deleted_on = ?, is_del = ? WHERE ?' at line 1","time":"6"}

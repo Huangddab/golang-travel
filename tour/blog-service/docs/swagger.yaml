@@ -13,7 +13,7 @@ definitions:
   model.Tag:
     properties:
       created_by:
-        type: integer
+        type: string
       created_on:
         type: integer
       deleted_on:
@@ -23,12 +23,14 @@ definitions:
       is_del:
         type: integer
       modified_by:
-        type: integer
+        type: string
       modified_on:
         type: integer
       name:
+        description: 标签名称
         type: string
       state:
+        description: 状态 (0-禁用 1-启用)
         type: integer
     type: object
   model.TagSwagger:
@@ -39,6 +41,46 @@ definitions:
         type: array
       pager:
         $ref: '#/definitions/app.Pager'
+    type: object
+  service.CreateTagRequest:
+    properties:
+      created_by:
+        maxLength: 100
+        minLength: 2
+        type: string
+      name:
+        maxLength: 100
+        minLength: 2
+        type: string
+      state:
+        enum:
+        - 0
+        - 1
+        type: integer
+    required:
+    - created_by
+    - name
+    type: object
+  service.UpdateTagRequest:
+    properties:
+      id:
+        minimum: 1
+        type: integer
+      modified_by:
+        maxLength: 100
+        minLength: 2
+        type: string
+      name:
+        maxLength: 100
+        type: string
+      state:
+        enum:
+        - 0
+        - 1
+        type: integer
+    required:
+    - id
+    - modified_by
     type: object
 info:
   contact: {}
@@ -89,31 +131,12 @@ paths:
       summary: 获取多个标签
     post:
       parameters:
-      - description: 标签名称
+      - description: 创建标签
         in: body
-        maxLength: 100
-        minLength: 3
-        name: name
+        name: data
         required: true
         schema:
-          type: string
-      - default: 1
-        description: 状态
-        in: body
-        name: state
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-      - description: 创建者
-        in: body
-        maxLength: 100
-        minLength: 3
-        name: created_by
-        required: true
-        schema:
-          type: string
+          $ref: '#/definitions/service.CreateTagRequest'
       produces:
       - application/json
       responses:
@@ -161,30 +184,12 @@ paths:
         name: id
         required: true
         type: integer
-      - description: 标签名称
+      - description: 更新标签
         in: body
-        maxLength: 100
-        minLength: 3
-        name: name
-        schema:
-          type: string
-      - default: 1
-        description: 状态
-        in: body
-        name: state
-        schema:
-          enum:
-          - 0
-          - 1
-          type: integer
-      - description: 修改者
-        in: body
-        maxLength: 100
-        minLength: 3
-        name: modified_by
+        name: data
         required: true
         schema:
-          type: string
+          $ref: '#/definitions/service.UpdateTagRequest'
       produces:
       - application/json
       responses:
