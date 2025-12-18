@@ -26,10 +26,12 @@ func NewRouters() *gin.Engine {
 	upload := api.NewUpload()
 	r.POST("/upload/file", upload.UploadFile)
 	r.StaticFS("/static", http.Dir(global.AppSetting.Upload.UploadSavePath))
+
 	// 登录认证
 	r.POST("/auth", api.GetAuth)
 	apiv1 := r.Group("/api/v1")
 	{
+		apiv1.Use(middleware.JWT())
 		// 标签管理
 		tags := apiv1.Group("/tags")
 		{

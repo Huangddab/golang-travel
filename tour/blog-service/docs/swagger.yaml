@@ -145,6 +145,8 @@ paths:
           description: 内部错误
           schema:
             $ref: '#/definitions/errcode.Error'
+      security:
+      - ApiKeyAuth: []
       summary: 获取多个标签
       tags:
       - Tags
@@ -171,6 +173,8 @@ paths:
           description: 内部错误
           schema:
             $ref: '#/definitions/errcode.Error'
+      security:
+      - ApiKeyAuth: []
       summary: 新增标签
       tags:
       - Tags
@@ -197,6 +201,8 @@ paths:
           description: 内部错误
           schema:
             $ref: '#/definitions/errcode.Error'
+      security:
+      - ApiKeyAuth: []
       summary: 删除标签
       tags:
       - Tags
@@ -230,6 +236,8 @@ paths:
           description: 内部错误
           schema:
             $ref: '#/definitions/errcode.Error'
+      security:
+      - ApiKeyAuth: []
       summary: 更新标签
       tags:
       - Tags
@@ -297,4 +305,9 @@ paths:
       summary: 文件上传
       tags:
       - Upload
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: token
+    type: apiKey
 swagger: "2.0"

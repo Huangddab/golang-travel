@@ -27,6 +27,7 @@ func NewTag() Tag {
 
 // @Summary 获取多个标签
 // @Tags Tags
+// @Security ApiKeyAuth
 // @Produce json
 // @Param name query string false "标签名称" maxlength(100)
 // @Param state query int false "状态" Enums(0, 1) default(1)
@@ -91,6 +92,7 @@ func (t Tag) List(c *gin.Context) {
 
 // @Summary 新增标签
 // @Tags Tags
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param data body service.CreateTagRequest true "创建标签"
 // @Success 200 {object} model.TagSwagger "成功"
@@ -122,6 +124,7 @@ func (t Tag) Create(c *gin.Context) {
 
 // @Summary 更新标签
 // @Tags Tags
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param id path int true "标签 ID"
 // @Param data body service.UpdateTagRequest true "更新标签"
@@ -153,6 +156,7 @@ func (t Tag) Update(c *gin.Context) {
 
 // @Summary 删除标签
 // @Tags Tags
+// @Security ApiKeyAuth
 // @Produce  json
 // @Param id path int true "标签 ID"
 // @Success 200 {string} string "成功"

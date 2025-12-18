@@ -35,6 +35,9 @@ func init() {
 // @version 1.0
 // @description Go 语言编程之旅：一起用 Go 做项目
 // @termsOfService https://github.com/go-programming-tour-book
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name token
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
 	router := routers.NewRouters()
