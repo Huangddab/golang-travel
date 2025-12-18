@@ -61,6 +61,13 @@ definitions:
     - created_by
     - name
     type: object
+  service.FileInfo:
+    properties:
+      accessUrl:
+        type: string
+      name:
+        type: string
+    type: object
   service.UpdateTagRequest:
     properties:
       id:
@@ -208,4 +215,35 @@ paths:
           schema:
             $ref: '#/definitions/errcode.Error'
       summary: 更新标签
+  /upload/file:
+    post:
+      consumes:
+      - multipart/form-data
+      parameters:
+      - description: 上传的文件
+        in: formData
+        name: file
+        required: true
+        type: file
+      - description: '文件类型 (例如: 1=jpg,2=jpeg,3=png,4=gif)'
+        in: formData
+        name: type
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 成功
+          schema:
+            $ref: '#/definitions/service.FileInfo'
+        "400":
+          description: 请求错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "500":
+          description: 内部错误
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 文件上传
 swagger: "2.0"

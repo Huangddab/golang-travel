@@ -16,6 +16,7 @@ type AppSettingS struct {
 	LogSavePath     string
 	LogFileName     string
 	LogFileExt      string
+	Upload          Upload
 }
 
 type DatabaseSettingS struct {
@@ -29,6 +30,13 @@ type DatabaseSettingS struct {
 	ParseTime    bool
 	MaxIdleConns int
 	MaxOpenConns int
+}
+
+type Upload struct {
+	UploadSavePath       string
+	UploadServerUrl      string
+	UploadImageMaxSize   int
+	UploadImageAllowExts []string
 }
 
 func (s *Setting) ReadSection(k string, v interface{}) error {

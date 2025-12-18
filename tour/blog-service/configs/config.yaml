@@ -12,6 +12,18 @@ App:
   LogSavePath: storage/logs
   LogFileName: app
   LogFileExt: .log
+  # 上传相关配置
+  Upload:
+    # 图片上传配置
+    UploadSavePath: storage/uploads
+    UploadServerUrl: http://127.0.0.1:8088/static
+    UploadImageMaxSize: 5 # MB
+    UploadImageAllowExts:
+      - .jpg
+      - .jpeg
+      - .png
+      - .gif
+      
 # 数据库配置
 Database:
   DBType: mysql
@@ -24,3 +36,4 @@ Database:
   ParseTime: True
   MaxIdleConns: 10
   MaxOpenConns: 30
+
