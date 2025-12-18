@@ -30,3 +30,6 @@
 2025/12/18 11:01:01 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"svc.UploadFile err: exceeds the maximum limit of file size","time":"6"}
 2025/12/18 11:01:01 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"svc.UploadFile err: exceeds the maximum limit of file size","time":"6"}
 2025/12/18 11:01:26 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"svc.UploadFile err: exceeds the maximum limit of file size","time":"7"}
+2025/12/18 17:04:51 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndVaild errs:AppSecret为必填字段,AppKey为必填字段","time":"8"}
+2025/12/18 17:05:00 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndVaild errs:AppKey为必填字段,AppSecret为必填字段","time":"6"}
+2025/12/18 17:11:57 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndVaild errs:AppKey为必填字段,AppSecret为必填字段","time":"6"}

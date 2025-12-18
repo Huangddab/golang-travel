@@ -16,6 +16,7 @@ type Upload struct{}
 func NewUpload() Upload { return Upload{} }
 
 // @Summary 文件上传
+// @Tags Upload
 // @Accept multipart/form-data
 // @Produce json
 // @Param file formData file true "上传的文件"

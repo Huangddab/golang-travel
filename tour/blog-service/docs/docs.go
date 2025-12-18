@@ -21,6 +21,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Tags"
+                ],
                 "summary": "获取多个标签",
                 "parameters": [
                     {
@@ -79,6 +82,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Tags"
+                ],
                 "summary": "新增标签",
                 "parameters": [
                     {
@@ -117,6 +123,9 @@ const docTemplate = `{
             "put": {
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "Tags"
                 ],
                 "summary": "更新标签",
                 "parameters": [
@@ -165,6 +174,9 @@ const docTemplate = `{
                 "produces": [
                     "application/json"
                 ],
+                "tags": [
+                    "Tags"
+                ],
                 "summary": "删除标签",
                 "parameters": [
                     {
@@ -197,6 +209,53 @@ const docTemplate = `{
                 }
             }
         },
+        "/auth": {
+            "post": {
+                "description": "根据 ` + "`" + `app_key` + "`" + ` 和 ` + "`" + `app_secret` + "`" + ` 生成访问 token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "获取登录认证",
+                "parameters": [
+                    {
+                        "description": "请求参数：{app_key, app_secret}",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/service.AuthRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/errcode.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/errcode.Error"
+                        }
+                    }
+                }
+            }
+        },
         "/upload/file": {
             "post": {
                 "consumes": [
@@ -204,6 +263,9 @@ const docTemplate = `{
                 ],
                 "produces": [
                     "application/json"
+                ],
+                "tags": [
+                    "Upload"
                 ],
                 "summary": "文件上传",
                 "parameters": [
@@ -308,6 +370,21 @@ const docTemplate = `{
                 },
                 "pager": {
                     "$ref": "#/definitions/app.Pager"
+                }
+            }
+        },
+        "service.AuthRequest": {
+            "type": "object",
+            "required": [
+                "app_key",
+                "app_secret"
+            ],
+            "properties": {
+                "app_key": {
+                    "type": "string"
+                },
+                "app_secret": {
+                    "type": "string"
                 }
             }
         },

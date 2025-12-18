@@ -42,6 +42,16 @@ definitions:
       pager:
         $ref: '#/definitions/app.Pager'
     type: object
+  service.AuthRequest:
+    properties:
+      app_key:
+        type: string
+      app_secret:
+        type: string
+    required:
+    - app_key
+    - app_secret
+    type: object
   service.CreateTagRequest:
     properties:
       created_by:
@@ -136,6 +146,8 @@ paths:
           schema:
             $ref: '#/definitions/errcode.Error'
       summary: 获取多个标签
+      tags:
+      - Tags
     post:
       parameters:
       - description: 创建标签
@@ -160,6 +172,8 @@ paths:
           schema:
             $ref: '#/definitions/errcode.Error'
       summary: 新增标签
+      tags:
+      - Tags
   /api/v1/tags/{id}:
     delete:
       parameters:
@@ -184,6 +198,8 @@ paths:
           schema:
             $ref: '#/definitions/errcode.Error'
       summary: 删除标签
+      tags:
+      - Tags
     put:
       parameters:
       - description: 标签 ID
@@ -215,6 +231,39 @@ paths:
           schema:
             $ref: '#/definitions/errcode.Error'
       summary: 更新标签
+      tags:
+      - Tags
+  /auth:
+    post:
+      consumes:
+      - application/json
+      description: 根据 `app_key` 和 `app_secret` 生成访问 token
+      parameters:
+      - description: 请求参数：{app_key, app_secret}
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/service.AuthRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/errcode.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/errcode.Error'
+      summary: 获取登录认证
+      tags:
+      - Auth
   /upload/file:
     post:
       consumes:
@@ -246,4 +295,6 @@ paths:
           schema:
             $ref: '#/definitions/errcode.Error'
       summary: 文件上传
+      tags:
+      - Upload
 swagger: "2.0"

@@ -26,6 +26,8 @@ func NewRouters() *gin.Engine {
 	upload := api.NewUpload()
 	r.POST("/upload/file", upload.UploadFile)
 	r.StaticFS("/static", http.Dir(global.AppSetting.Upload.UploadSavePath))
+	// 登录认证
+	r.POST("/auth", api.GetAuth)
 	apiv1 := r.Group("/api/v1")
 	{
 		// 标签管理
@@ -48,7 +50,6 @@ func NewRouters() *gin.Engine {
 			articles.GET("/:id", article.Get)
 			articles.GET("", article.List)
 		}
-
 	}
 	return r
 }

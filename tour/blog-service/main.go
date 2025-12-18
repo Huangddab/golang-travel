@@ -54,24 +54,32 @@ func main() {
 }
 
 func setupSetting() error {
+	// NewSetting 创建一个 Setting 实例
 	setting, err := setting.NewSetting()
 	if err != nil {
 		return err
 	}
+	// 读取配置文件的各个部分到全局变量中
 	err = setting.ReadSection("Server", &global.ServerSetting)
 	if err != nil {
 		return err
 	}
-
+	// 读取 App 部分的配置
 	err = setting.ReadSection("App", &global.AppSetting)
 	if err != nil {
 		return err
 	}
+	// 读取 Database 部分的配置
 	err = setting.ReadSection("Database", &global.DatabaseSetting)
 	if err != nil {
 		return err
 	}
-
+	// 读取 JWT 部分的配置
+	err = setting.ReadSection("JWT", &global.JWTSetting)
+	if err != nil {
+		return err
+	}
+	global.JWTSetting.Expire *= time.Second
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
 	return nil
