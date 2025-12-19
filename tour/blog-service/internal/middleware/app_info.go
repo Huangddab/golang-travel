@@ -10,3 +10,4 @@ func AppInfo() gin.HandlerFunc {
 	}
 }
 
+

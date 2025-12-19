@@ -278,3 +278,6 @@ DAO 层的职责是 **屏蔽具体的 SQL/GORM 调用细节**，对上只暴露�
 
 go get -u gopkg.in/gomail.v2
 Gomail 是一个用于发送电子邮件的简单又高效的第三方开源库，目前只支持使用 SMTP 服务器发送电子邮件，但是其 API 较为灵活，如果有其它的定制需求也可以轻易地借助其实现，这恰恰好符合我们的需求，因为目前我们只需要一个小而美的发送电子邮件的库就可以了。
+
+
+curl.exe -X POST "http://127.0.0.1:8088/auth" -H "Content-Type: application/json" -d '{"app_key":"eddycjy","app_secret":"go-programming-tour-book"}'

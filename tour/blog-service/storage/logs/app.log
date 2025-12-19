@@ -36,3 +36,4 @@
 2025/12/18 17:13:58 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndVaild errs:AppSecret为必填字段,AppKey为必填字段","time":"8"}
 2025/12/18 17:14:08 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndVaild errs:","time":"9"}
 2025/12/18 17:14:32 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndVaild errs:","time":"7"}
+2025/12/19 16:01:20 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"svc.UploadFile err: file suffix is not supported","time":"5"}
