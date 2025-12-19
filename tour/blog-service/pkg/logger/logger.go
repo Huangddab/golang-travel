@@ -143,6 +143,9 @@ func (l *Logger) Output(lev Level, msg string) {
 func (l *Logger) Info(v ...interface{}) {
 	l.Output(LevelInfo, fmt.Sprint(v...))
 }
+func (l *Logger) Infof(format string, v ...interface{}) {
+	l.Output(LevelInfo, fmt.Sprintf(format, v...))
+}
 func (l *Logger) Debug(v ...interface{}) {
 	l.Output(LevelDebug, fmt.Sprint(v...))
 }

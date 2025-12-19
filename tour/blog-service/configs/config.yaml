@@ -41,3 +41,11 @@ Database:
   MaxIdleConns: 10
   MaxOpenConns: 30
 
+
+Email:
+  Host: smtp.qq.com
+  Port: 465
+  Username: 814594276@qq.com
+  Password: gifrtnxipvidbdeb
+  To: 
+    - huangddab@163.com

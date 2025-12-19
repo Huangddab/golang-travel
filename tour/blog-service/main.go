@@ -82,6 +82,11 @@ func setupSetting() error {
 	if err != nil {
 		return err
 	}
+	// 读取 Email 部分的配置
+	err = setting.ReadSection("Email", &global.EmailSetting)
+	if err != nil {
+		return err
+	}
 	global.JWTSetting.Expire *= time.Second
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
