@@ -5,18 +5,39 @@ import (
 	"blog-service/internal/middleware"
 	"blog-service/internal/routers/api"
 	v1 "blog-service/internal/routers/api/v1"
+	"blog-service/pkg/limiter"
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
+var methodLimiters = limiter.NewMethodLimiter().AddBuckets(limiter.LimiterBucketsRule{
+	Key:          "/auth",
+	FillInterval: time.Second,
+	Capacity:     10,
+	Quantum:      10,
+})
+
 func NewRouters() *gin.Engine {
 	r := gin.New()
-	r.Use(gin.Logger())
-	r.Use(gin.Recovery())
+
+	// 限流
+	if global.ServerSetting.RunMode == "debug" {
+		r.Use(gin.Logger())
+		r.Use(gin.Recovery())
+	} else {
+		r.Use(middleware.AccessLog())
+		r.Use(middleware.Recovery())
+	}
+	r.Use(middleware.RateLimiter(methodLimiters))
+	r.Use(middleware.ContextTimeout(60 * time.Second))
 	r.Use(middleware.Translations())
+	// r.Use(gin.Logger())
+	// r.Use(gin.Recovery())
+	// r.Use(middleware.Translations())
 	// Serve swagger UI. Use the default handler so the UI loads the doc.json
 	// from the same host and port as the running server (avoids hardcoded port).
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
