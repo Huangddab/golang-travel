@@ -1,12 +1,17 @@
 package setting
 
-import "github.com/spf13/viper"
+import (
+	"github.com/fsnotify/fsnotify"
+	"github.com/spf13/viper"
+)
 
 type Setting struct {
 	vp *viper.Viper // 存储Viper 实例指针
 }
 
-func NewSetting() (*Setting, error) {
+// 热更新监听和变更处理
+
+func NewSetting(configs ...string) (*Setting, error) {
 	vip := viper.New() // 创建一个新的Viper实例
 	// 查找名为 `config` 的配置文件（会查找 config.yaml）
 	vip.SetConfigName("config")
@@ -17,6 +22,18 @@ func NewSetting() (*Setting, error) {
 	if err != nil {
 		return nil, err
 	}
+	s := &Setting{vp: vip}
+	// 起一个协程 监听文件配置
+	s.WatchSettingChange()
 
-	return &Setting{vp: vip}, nil
+	return s, nil
+}
+
+func (s *Setting) WatchSettingChange() {
+	go func() {
+		s.vp.WatchConfig()
+		s.vp.OnConfigChange(func(in fsnotify.Event) {
+			_ = s.ReloadAllSection()
+		})
+	}()
 }

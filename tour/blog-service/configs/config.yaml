@@ -22,7 +22,7 @@ App:
       - .jpg
       - .jpeg
       - .png
-      - .gif
+      - .
 JWT:
   Secret: eddycjy
   Issuer: blog-service
