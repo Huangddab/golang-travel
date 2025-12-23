@@ -2,6 +2,8 @@ package model
 
 import (
 	"blog-service/pkg/app"
+	"errors"
+	"fmt"
 
 	"gorm.io/gorm"
 )
@@ -73,4 +75,20 @@ func (t Tag) Update(db *gorm.DB, value interface{}) error {
 // 删除标签
 func (t Tag) Delete(db *gorm.DB) error {
 	return db.Where("id = ? AND is_del = ?", t.Model.ID, 0).Delete(&t).Error
+}
+
+// 查重
+func (t Tag) Exists(db *gorm.DB) (bool, error) {
+	err := db.Model(&Tag{}).Where("name = ? AND is_del = 0", t.Name).First(&t).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			fmt.Println("---1----")
+			return false, nil
+		}
+		fmt.Println("----2---")
+
+		return false, err
+	}
+	fmt.Println("----3---")
+	return true, nil
 }

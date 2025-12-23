@@ -3,6 +3,7 @@ package dao
 import (
 	"blog-service/internal/model"
 	"blog-service/pkg/app"
+	"fmt"
 )
 
 // 用于处理标签模块的 dao 操作
@@ -54,4 +55,13 @@ func (d *Dao) DeleteTag(id uint32) error {
 		Model: &model.Model{ID: id},
 	}
 	return tag.Delete(d.engine)
+}
+
+// 查询标签是否存在
+func (d *Dao) TagExists(name string) (bool, error) {
+	tag := model.Tag{
+		Name: name,
+	}
+	fmt.Println("tag:", tag)
+	return tag.Exists(d.engine)
 }

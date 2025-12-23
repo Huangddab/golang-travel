@@ -37,3 +37,13 @@
 2025/12/18 17:14:08 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndVaild errs:","time":"9"}
 2025/12/18 17:14:32 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"app.BindAndVaild errs:","time":"7"}
 2025/12/19 16:01:20 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 28 main.init.0"],"level":"ERROR","message":"svc.UploadFile err: file suffix is not supported","time":"5"}
+2025/12/23 17:09:42 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"svc.CreateTag err:错误码：20010006，错误信息：标签已存在","time":"10"}
+2025/12/23 17:12:58 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"svc.CreateTag err:错误码：20010006，错误信息：标签已存在","time":"12"}
+2025/12/23 17:16:03 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"svc.CreateTag err:错误码：20010006，错误信息：标签已存在","time":"10"}
+2025/12/23 17:21:56 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"svc.CreateTag err:错误码：20010006，错误信息：标签已存在","time":"10"}
+2025/12/23 17:25:27 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: Name为必填字段,CreatedBy为必填字段","time":"11"}
+2025/12/23 17:25:49 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: CreatedBy为必填字段,Name为必填字段","time":"11"}
+2025/12/23 17:26:05 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: Name为必填字段,CreatedBy为必填字段","time":"11"}
+2025/12/23 17:26:17 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: Name为必填字段,CreatedBy为必填字段","time":"11"}
+2025/12/23 17:27:49 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"app.BindAndValid errs: CreatedBy为必填字段","time":"11"}
+2025/12/23 17:28:05 {"callers":["E:/Workspace/TOOLS/golang-travel/tour/blog-service/main.go: 47 main.init.0"],"level":"ERROR","message":"svc.CreateTag err:错误码：20010006，错误信息：标签已存在","time":"11"}

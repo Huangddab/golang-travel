@@ -3,6 +3,8 @@ package service
 import (
 	"blog-service/internal/model"
 	"blog-service/pkg/app"
+	"blog-service/pkg/errcode"
+	"fmt"
 )
 
 // 接口中定义的的增删改查和统计行为进行了 Request 结构体编写
@@ -42,6 +44,14 @@ func (svc *Service) GetTagList(param *TagListRequest, pager *app.Pager) ([]*mode
 }
 
 func (svc *Service) CreateTag(param *CreateTagRequest) error {
+	exists, err := svc.dao.TagExists(param.Name)
+	if err != nil {
+		return err
+	}
+	if exists {
+		fmt.Println("true====")
+		return errcode.ErrorTagAlreadyExists
+	}
 	return svc.dao.CreateTag(param.Name, param.State, param.CreatedBy)
 }
 

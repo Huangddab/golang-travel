@@ -112,6 +112,10 @@ func (t Tag) Create(c *gin.Context) {
 	svc := service.New(c.Request.Context())
 	err := svc.CreateTag(&param)
 	if err != nil {
+		if err == errcode.ErrorTagAlreadyExists {
+			response.ToErrorResponse(errcode.ErrorTagAlreadyExists)
+			return
+		}
 		global.Logger.Errorf("svc.CreateTag err:%v", err)
 		response.ToErrorResponse(errcode.ErrorCreateTagFail)
 		return
