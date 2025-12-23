@@ -12,12 +12,13 @@ type ServerSettingS struct {
 
 // app
 type AppSettingS struct {
-	DefaultPageSize int
-	MaxPageSize     int
-	LogSavePath     string
-	LogFileName     string
-	LogFileExt      string
-	Upload          Upload
+	DefaultPageSize       int
+	MaxPageSize           int
+	LogSavePath           string
+	LogFileName           string
+	LogFileExt            string
+	Upload                Upload
+	DefaultContextTimeout time.Duration
 }
 
 // database

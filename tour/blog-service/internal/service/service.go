@@ -14,6 +14,6 @@ type Service struct {
 
 func New(ctx context.Context) Service {
 	svc := Service{ctx: ctx}
-	svc.dao = dao.New(global.DBEngin)
+	svc.dao = dao.New(global.DBEngine)
 	return svc
 }

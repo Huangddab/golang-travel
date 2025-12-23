@@ -30,7 +30,7 @@ func GenerateToken(appKey, appSecret string) (string, error) {
 		AppSecret: util.EncodeMD5(appSecret),
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: exprieTime.Unix(),
-			IssuedAt:  global.DBEngin.RowsAffected,
+			IssuedAt:  global.DBEngine.RowsAffected,
 		},
 	}
 
